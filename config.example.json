@@ -1,0 +1,27 @@
+{
+  "bot_id": 123456789,
+  "port": ":8080", 
+  "host": "",
+  "read_timeout": "15s",
+  "write_timeout": "15s",
+  "enable_log": true,
+  "log_level": "info",
+  "plugin_dir": "./plugins",
+  "enabled_plugins": [],
+  "lagrange": {
+    "url": "ws://localhost:8081",
+    "reconnect": true,
+    "reconnect_interval": "5s"
+  },
+  "security": {
+    "allowed_origins": ["*"],
+    "rate_limit": {
+      "enabled": true,
+      "requests_per_minute": 60
+    }
+  },
+  "database": {
+    "type": "sqlite",
+    "path": "./data/bot.db"
+  }
+}

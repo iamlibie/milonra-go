@@ -1,0 +1,87 @@
+version: "3.8"
+
+services:
+  milonra-go:
+    build: .
+    image: milonra-go:latest
+    container_name: milonra-go
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080"
+
+    environment:
+      - BOT_ID=${BOT_ID:-123456789}
+      - LAGRANGE_URL=${LAGRANGE_URL:-ws://lagrange:8081}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - TZ=Asia/Shanghai
+
+    volumes:
+      - ./data:/home/milonra-go/data
+      - ./logs:/home/milonra-go/logs
+      - ./config.json:/home/milonra-go/config.json:ro
+
+    networks:
+      - milonra-go-network
+
+    depends_on:
+      - lagrange
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8080/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Lagrange OneBot 实现 (示例)
+  lagrange:
+    image: lagrangedev/lagrange.onebot:latest
+    container_name: lagrange
+    restart: unless-stopped
+
+    ports:
+      - "8081:8081"
+
+    volumes:
+      - ./lagrange-config:/app/config
+      - ./lagrange-data:/app/data
+
+    networks:
+      - milonra-go-network
+
+  # Nginx 反向代理 (可选)
+  nginx:
+    image: nginx:alpine
+    container_name: milonra-go-nginx
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+
+    networks:
+      - milonra-go-network
+
+    depends_on:
+      - milonra-go
+
+networks:
+  milonra-go-network:
+    driver: bridge
+
+volumes:
+  milonra-go-data:
+  lagrange-data:
