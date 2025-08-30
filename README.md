@@ -1,4 +1,4 @@
-# MilonraGo 🤖
+# MilonraGo 
 
 [![Go Version](https://img.shields.io/badge/Go-1.25%2B-blue.svg)](https://golang.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -6,16 +6,16 @@
 
 一个基于 Go 语言开发的高性能、模块化机器人框架，支持 OneBot 标准协议。MilonraGo 旨在为开发者提供一个简单易用、功能强大的机器人开发平台，支持自定义配置和插件扩展。如想获得最新通知或是加快BUG反馈进度请加Q群881391061
 
-## ✨ 特性
+## 特性
 
-- 🚀 **高性能**: 基于 Go 语言，支持高并发处理
-- 🔌 **插件化**: 灵活的插件系统，支持热插拔
-- 🌐 **标准协议**: 完整支持 OneBot 11 标准
-- 📡 **实时通信**: 基于 WebSocket 的稳定连接
-- 🛠️ **易于扩展**: 简洁的 API 设计，便于二次开发
-- 📚 **完整文档**: 详细的开发文档和示例
+- **高性能**: 基于 Go 语言，支持高并发处理
+- **插件化**: 灵活的插件系统，支持热插拔
+- **标准协议**: 完整支持 OneBot 11 标准
+- **实时通信**: 基于 WebSocket 的稳定连接
+- **易于扩展**: 简洁的 API 设计，便于二次开发
+- **完整文档**: 详细的开发文档和示例
 
-## 🚀 快速开始
+## 快速开始
 
 ### 安装
 
@@ -23,7 +23,7 @@
 go get github.com/iamlibie/milonra-go
 ```
 
-### 快速使用 - SDK方式 ⭐
+### 快速使用 - SDK方式 
 
 ```go
 package main
@@ -281,7 +281,7 @@ docker-compose up -d
 ## 📞 联系我们
 
 - 提交 Issue: [GitHub Issues](https://github.com/iamlibie/milonra-go/issues)
-- 讨论: [GitHub Discussions](https://github.com/iamlibie/milonra-go/discussions)
+- 讨论: [QQGroup](https://qm.qq.com/q/OqjgLXweWK)
 
 ---
 
